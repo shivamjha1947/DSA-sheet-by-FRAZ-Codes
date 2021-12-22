@@ -5,7 +5,7 @@ The majority element is the element that appears more than ⌊n / 2⌋ times. Yo
 ---------------------------------------------------------------------------------------------------
 Solution:
 Method 1)
-// Without Map
+// Without Map ( Boyer-Moore voting system)
 int majorityElement(vector<int>& num) {
     int major=num[0], count = 1;
     for(int i=1; i<num.size();i++){
