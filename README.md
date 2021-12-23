@@ -8,6 +8,6 @@ description of the question
 
 Solution:
 
-Code with multiple approaches when required 
+Code with multiple approaches  
 
 #### Will be completed by 30/04/2022
