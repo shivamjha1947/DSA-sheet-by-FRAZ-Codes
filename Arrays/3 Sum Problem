@@ -18,7 +18,7 @@ vector<vector<int>> threeSum(vector<int>& a) {
             if(a[i]+a[j]+a[k]==0){
                 vector<int> v{a[i],a[j],a[k]};
                 ans.push_back(v);
-                while(j<k && a[j]==v[1]) 
+                while(j<k && a[j]==v[1])     // These 2 while loops and the while loop at the last is to take care of unique elements
                     j++;
                 while(j<k && a[k]==v[2]) 
                     k--;
