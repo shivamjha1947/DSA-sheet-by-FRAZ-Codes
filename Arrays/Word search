@@ -1,0 +1,74 @@
+Question: https://leetcode.com/problems/word-search/
+Given an m x n grid of characters board and a string word, return true if word exists in the grid.
+The word can be constructed from letters of sequentially adjacent cells, where adjacent cells are horizontally or vertically neighboring. 
+The same letter cell may not be used more than once.
+
+--------------------------------------------------------------------------------------------------------------------
+Solution: (using Backtracking ans visited array of bfs and dfs)
+bool help(vector<vector<char>>& board, string s,int i, int j, vector<vector<bool>> &vis){
+    if(s.size()==1){
+        return true;
+    }
+    int n=board.size();
+    int m=board[0].size();
+    vis[i][j]=true;
+    bool ans=false;
+    if(j-1>=0){
+        if(board[i][j-1]==s[1] && vis[i][j-1]==false){
+            ans=help(board,s.substr(1),i,j-1,vis);
+            if(ans){
+                return ans;
+            }
+        }
+    }
+    if(j+1<m){
+        if(board[i][j+1]==s[1] && vis[i][j+1]==false){
+            ans=help(board,s.substr(1),i,j+1,vis);
+            if(ans){
+                return ans;
+            }
+        }
+    }
+    if(i-1>=0){
+        if(board[i-1][j]==s[1] && vis[i-1][j]==false){
+            ans=help(board,s.substr(1),i-1,j,vis);
+            if(ans){
+                return ans;
+            }
+        }
+    }
+    if(i+1<n){
+        if(board[i+1][j]==s[1] && vis[i+1][j]==false){
+            ans=help(board,s.substr(1),i+1,j,vis);
+            if(ans){
+                return ans;
+            }
+        }
+    }
+    vis[i][j]=false;
+    return ans;
+}
+bool exist(vector<vector<char>>& board, string s) {
+    bool ans=false;
+    int row=board.size();
+    int col=board[0].size();
+    vector<vector<bool>> vis(row);
+    for(int i=0;i<board.size();i++){
+        vector<bool> v(col);
+        vis[i]=v;
+        for(int j=0;j<board[i].size();j++){
+            vis[i][j]=false;
+        }
+    }
+    for(int i=0;i<board.size();i++){
+        for(int j=0;j<board[i].size();j++){
+            if(board[i][j]==s[0]){
+                ans=help(board,s,i,j,vis);
+            }
+            if(ans){
+                return ans;
+            }
+        }
+    }
+    return ans;
+}
