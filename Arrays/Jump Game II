@@ -1,0 +1,46 @@
+Question: https://leetcode.com/problems/jump-game-ii/
+Given an array of non-negative integers nums, you are initially positioned at the first index of the array.
+Each element in the array represents your maximum jump length at that position.
+Your goal is to reach the last index in the minimum number of jumps.
+You can assume that you can always reach the last index.
+
+----------------------------------------------------------------------------------------------------------------
+Solution:
+Method 1) Recusive / Memoization(DP)
+int t[10002];
+int solve(vector<int>& a,int i){
+    if(i==a.size()-1){
+        return 0;
+    }
+    if(t[i]!=-1){
+        return t[i];
+    }
+    int temp=solve(a,i+1);
+    for(int j=2;j<=a[i];j++){
+        if(i+j>=a.size()-1){
+            return t[i]=1;
+        }
+        temp=min(temp,solve(a,i+j));
+    }
+    return t[i]=1+temp;
+}
+int jump(vector<int>& nums) {
+    memset(t,-1,sizeof(t));
+    return solve(nums,0);
+}
+
+Method 2) BFS
+int jump(vector<int>& nums) {
+    int n = nums.size(), step = 0, start = 0, end = 0;
+    while (end < n - 1) {
+        step++; 
+  int maxend = end + 1;
+  for (int i = start; i <= end; i++) {
+            if (i + nums[i] >= n - 1) return step;
+    maxend = max(maxend, i + nums[i]);
+  }
+        start = end + 1;
+        end = maxend;
+    }
+return step;
+}
