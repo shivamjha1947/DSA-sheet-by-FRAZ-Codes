@@ -1,0 +1,24 @@
+Question: https://leetcode.com/problems/maximum-area-of-a-piece-of-cake-after-horizontal-and-vertical-cuts/
+You are given a rectangular cake of size h x w and two arrays of integers horizontalCuts and verticalCuts where:
+horizontalCuts[i] is the distance from the top of the rectangular cake to the ith horizontal cut and similarly, and
+verticalCuts[j] is the distance from the left of the rectangular cake to the jth vertical cut.
+Return the maximum area of a piece of cake after you cut at each horizontal and vertical position provided in the arrays horizontalCuts and verticalCuts. 
+Since the answer can be a large number, return this modulo 10^9 + 7.
+
+-------------------------------------------------------------------------------------------------------------------
+Solution:
+class Solution {
+    int getMax(int hh, vector<int> &h) {
+        sort(h.begin(), h.end()); 
+        int nh = h.size();
+        int maxHeight = max(hh-h[nh-1], h[0]);
+        for (int i=1; i<nh; i++) {
+            maxHeight = max(maxHeight, h[i]-h[i-1]);
+        }
+        return maxHeight;
+    }
+public:
+    int maxArea(int hh, int ww, vector<int>& h, vector<int>& v) {
+        return (int)((long)getMax(hh, h)*getMax(ww, v)%1000000007);
+    }
+};
