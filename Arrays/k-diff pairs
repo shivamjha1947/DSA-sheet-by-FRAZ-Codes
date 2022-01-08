@@ -20,9 +20,7 @@ int findPairs(vector<int>& nums, int k) {
         if (indices.count(nums[i] + k)) {
             starters.insert(nums[i]);
         }
-
         indices[nums[i]] += 1;
     }
-
     return starters.size();
 }
