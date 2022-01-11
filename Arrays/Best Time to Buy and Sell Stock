@@ -4,7 +4,7 @@
   Return the maximum profit you can achieve from this transaction. If you cannot achieve any profit, return 0.
   
   -----------------------------------------------------------
-  Solution:
+  Solution: 
   int maxProfit(vector<int> &prices) {
       int maxPro = 0;
       int minPrice = INT_MAX;
