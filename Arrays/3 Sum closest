@@ -15,7 +15,9 @@ int threeSumClosest(vector<int>& nums, int target) {
         int third = nums.size()-1;            
         while(second < third) {
             int curSum = nums[first]+nums[second]+nums[third];
-            if(curSum == target) return curSum;
+            if(curSum == target) {
+                return curSum;
+            }    
             if(abs(target-curSum)<abs(target-closest)) {
                 closest = curSum;
             }
