@@ -17,7 +17,7 @@ int help(int n){
     if(t[n]!=-1){
         return t[n];
     }
-    for(int i=1;i*i<n;i++){
+    for(int i=1;i*i<=n;i++){
         if(n%i==0){
             if(help(n-i)==0){
                 return t[n]=1;
