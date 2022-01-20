@@ -16,7 +16,6 @@ int climbStairs(int n) {
     }
     return t[n];
 }
-
 Method 2) Recursive
 int climbStairs(int n) {
     if(n==1 || n==2){
