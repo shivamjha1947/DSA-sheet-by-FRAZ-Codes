@@ -11,7 +11,7 @@ Note that the grouping (1 11 06) is invalid because "06" cannot be mapped into '
 Given a string s containing only digits, return the number of ways to decode it.
 The test cases are generated so that the answer fits in a 32-bit integer.
 
-------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------
 Solution:
 Method 1) Memoization
 int numDecodings(string s) {
