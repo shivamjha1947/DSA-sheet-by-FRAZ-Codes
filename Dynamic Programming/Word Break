@@ -1,0 +1,33 @@
+Question: https://leetcode.com/problems/word-break/
+Given a string s and a dictionary of strings wordDict, return true if s can be segmented into a space-separated sequence of one or more dictionary words.
+Note that the same word in the dictionary may be reused multiple times in the segmentation.
+
+--------------------------------------------------------------------------------------------------------------
+Solution:
+int t[301];
+bool help(int i,string s, unordered_set<string>& st){
+    if(i==s.size()){
+        return true;
+    }
+    if(t[i]!=-1){
+        return t[i];
+    }
+    string temp;
+    for(int j=i;j<s.size();j++){
+        temp+=s[j];
+        if(st.find(temp)!=st.end()){
+            if(help(j+1,s,st)){
+                return t[i]=true;
+            }
+        }
+    }
+    return t[i]=false;
+}
+bool wordBreak(string s, vector<string>& w) {
+    memset(t,-1,sizeof(t));
+    unordered_set<string> st;
+    for(auto i:w){
+        st.insert(i);
+    }
+    return help(0,s,st);
+}
